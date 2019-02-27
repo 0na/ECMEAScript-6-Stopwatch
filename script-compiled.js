@@ -26,18 +26,22 @@ var Stopwatch = function () {
     }, {
         key: 'print',
         value: function print() {
+            //ok
             this.display.innerText = this.format(this.times);
         }
     }, {
         key: 'format',
         value: function format(times) {
-            return pad0(times.minutes) + ':' + pad0(times.seconds) + ':' + pad0(Math.floor(times.miliseconds)); //02:04:23 (2 min, 4 s, 10 ms)
-        }
+            //przygotowuje tekst do wyswietlenia
+            return pad0(times.minutes) + ':' + pad0(times.seconds) + ':' + pad0(Math.floor(times.miliseconds));
+        } //wynik to 02:04:23 (2 min, 4 s, 10 ms)
+
     }, {
         key: 'start',
         value: function start() {
             var _this = this;
 
+            //ok
             if (!this.running) {
                 this.running = true;
                 this.watch = setInterval(function () {
@@ -48,6 +52,7 @@ var Stopwatch = function () {
     }, {
         key: 'step',
         value: function step() {
+            //ok
             if (!this.running) return;
             this.calculate();
             this.print();
@@ -55,6 +60,7 @@ var Stopwatch = function () {
     }, {
         key: 'calculate',
         value: function calculate() {
+            //ok
             this.times.miliseconds += 1;
             if (this.times.miliseconds >= 100) {
                 this.times.seconds += 1;
@@ -68,6 +74,7 @@ var Stopwatch = function () {
     }, {
         key: 'stop',
         value: function stop() {
+            //ok
             this.running = false;
             clearInterval(this.watch);
         }
@@ -76,20 +83,21 @@ var Stopwatch = function () {
     return Stopwatch;
 }();
 
-var stopwatch = new Stopwatch(document.querySelector('.stopwatch'));
+var stopwatch = new Stopwatch(document.querySelector('.stopwatch')); //ok
 
 var startButton = document.getElementById('start');
 startButton.addEventListener('click', function () {
     return stopwatch.start();
-});
+}); //ok
 
 var stopButton = document.getElementById('stop');
 stopButton.addEventListener('click', function () {
     return stopwatch.stop();
-});
+}); //ok
 
 //Funkcja pad0 przyjmuje na wejście wartość liczbową, przekształca ją na stringa, a następnie sprawdza czy długość tego przekształcenia jest mniejsza od 2 dodając tym samym zero przed tę liczbę.
 function pad0(value) {
+    //dodaje 0 do liczb jednocyfrowych
     var result = value.toString();
     if (result.length < 2) {
         result = '0' + result;
