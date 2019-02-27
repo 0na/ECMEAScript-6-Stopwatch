@@ -1,5 +1,12 @@
-class Stopwatch {
-    constructor(display) {
+const {
+    minutes,
+    seconds,
+    miliseconds
+} = times
+
+class Stopwatch extends React.Component { //mysle,ze ok
+    constructor(props) {
+        super(props);
         this.running = false;
         this.display = display;
         this.reset();
@@ -15,9 +22,16 @@ class Stopwatch {
     print() {
         this.display.innerText = this.format(this.times);
     }
-    format(times) {
-        return `${pad0(times.minutes)}:${pad0(times.seconds)}:${pad0(Math.floor(times.miliseconds))}`; //02:04:23 (2 min, 4 s, 10 ms)
+    format() {
+        this.times(pad0) = {
+            minutes,
+            seconds,
+            miliseconds
+        };
     }
+    // format(times) {
+    //     return `${pad0(times.minutes)}:${pad0(times.seconds)}:${pad0(Math.floor(times.miliseconds))}`; //02:04:23 (2 min, 4 s, 10 ms)
+    // }
     start() {
         if (!this.running) {
             this.running = true;
@@ -29,24 +43,38 @@ class Stopwatch {
         this.calculate();
         this.print();
     }
+
     calculate() {
-        this.times.miliseconds += 1;
-        if (this.times.miliseconds >= 100) {
-            this.times.seconds += 1;
-            this.times.miliseconds = 0;
-        }
-        if (this.times.seconds >= 60) {
-            this.times.minutes += 1;
-            this.times.seconds = 0;
+        this.times = {
+            miliseconds = +1,
+            if (this.miliseconds >= 100) {
+                seconds = +1,
+                    miliseconds = 0;
+            }
+            if (this.times.seconds >= 60) {
+                minutes = +1,
+                    seconds = 0,
+            }
         }
     }
+
+    // calculate() {
+    //     this.times.miliseconds += 1;
+    //     if (this.times.miliseconds >= 100) {
+    //         this.times.seconds += 1;
+    //         this.times.miliseconds = 0;
+    //     }
+    //     if (this.times.seconds >= 60) {
+    //         this.times.minutes += 1;
+    //         this.times.seconds = 0;
+    //     }
+    // }
     stop() {
         this.running = false;
         clearInterval(this.watch);
     }
 
 }
-
 const stopwatch = new Stopwatch(
     document.querySelector('.stopwatch'));
 
