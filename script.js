@@ -1,3 +1,6 @@
+//const { minutes, seconds, miliseconds } = times;
+
+
 class Stopwatch {
     constructor(display) {
         this.running = false;
@@ -17,7 +20,13 @@ class Stopwatch {
         this.display.innerText = this.format(this.times);
     }
 
-
+    // format() {
+    //     this.times(pad0) = {
+    //         minutes,
+    //         seconds,
+    //         miliseconds
+    //     };
+    // }
     format(times) { //przygotowuje tekst do wyswietlenia
         return `${pad0(times.minutes)}:${pad0(times.seconds)}:${pad0(Math.floor(times.miliseconds))}`;
     } //wynik to 02:04:23 (2 min, 4 s, 10 ms)
@@ -34,6 +43,22 @@ class Stopwatch {
         this.calculate();
         this.print();
     }
+
+    // calculate() {
+    //     this.times = {
+    //         miliseconds = +1,
+    //         if (this.miliseconds >= 100) {
+    //             seconds = +1,
+    //                 miliseconds = 0;
+    //         }
+    //         if (this.times.seconds >= 60) {
+    //             minutes = +1,
+    //                 seconds = 0,
+    //         }
+    //     }
+    // }
+
+
 
     calculate() { //ok
         this.times.miliseconds += 1;
