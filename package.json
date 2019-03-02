@@ -19,6 +19,7 @@
   "homepage": "https://github.com/0na/ECMEAScript-6-Timer#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-latest": "^6.24.1"
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1"
   }
 }
