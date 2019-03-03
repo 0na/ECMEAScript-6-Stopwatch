@@ -49,8 +49,22 @@ class Stopwatch extends React.Component {
     this.calculate();
   }
 
+  // calculate() {
+  //   this.setState({
+  //     times: {
+  //       miliseconds = +1,
+  //       if (miliseconds >= 100) {
+  //         seconds += 1,
+  //         miliseconds = 0,
+  //       }
+  //       if (seconds >= 60) {
+  //         minutes += 1,
+  //         seconds = 0,
+  //       });
+  //       }}}
+
   calculate() {
-    const times = Object.assign({}, this.state.times);
+    const times = this.state.times;
     times.miliseconds += 1;
     if (times.miliseconds >= 100) {
       times.seconds += 1;
@@ -60,7 +74,9 @@ class Stopwatch extends React.Component {
       times.minutes += 1;
       times.seconds = 0;
     }
-    this.setState({ times });
+    this.setState({
+      times
+    });
   }
 
   stop() {
@@ -72,9 +88,9 @@ class Stopwatch extends React.Component {
     return (
       <div className='container'>
         <nav>
-          <button onClick={this.start.bind(this)}>Start</button>
-          <button onClick={this.stop.bind(this)}>Stop</button>
-          <button onClick={this.reset.bind(this)}>Reset</button>
+          <button onClick={this.start.bind(this)}> Start </button>
+          <button onClick={this.stop.bind(this)}> Stop </button>
+          <button onClick={this.reset.bind(this)}> Reset </button>
         </nav>
         {this.format(this.state.times)}
       </div>

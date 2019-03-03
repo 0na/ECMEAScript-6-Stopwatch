@@ -69,10 +69,25 @@ var Stopwatch = function (_React$Component) {
       if (!this.running) return;
       this.calculate();
     }
+
+    // calculate() {
+    //   this.setState({
+    //     times: {
+    //       miliseconds = +1,
+    //       if (miliseconds >= 100) {
+    //         seconds += 1,
+    //         miliseconds = 0,
+    //       }
+    //       if (seconds >= 60) {
+    //         minutes += 1,
+    //         seconds = 0,
+    //       });
+    //       }}}
+
   }, {
     key: "calculate",
     value: function calculate() {
-      var times = Object.assign({}, this.state.times);
+      var times = this.state.times;
       times.miliseconds += 1;
       if (times.miliseconds >= 100) {
         times.seconds += 1;
@@ -82,7 +97,9 @@ var Stopwatch = function (_React$Component) {
         times.minutes += 1;
         times.seconds = 0;
       }
-      this.setState({ times: times });
+      this.setState({
+        times: times
+      });
     }
   }, {
     key: "stop",
@@ -102,17 +119,17 @@ var Stopwatch = function (_React$Component) {
           React.createElement(
             "button",
             { onClick: this.start.bind(this) },
-            "Start"
+            " Start "
           ),
           React.createElement(
             "button",
             { onClick: this.stop.bind(this) },
-            "Stop"
+            " Stop "
           ),
           React.createElement(
             "button",
             { onClick: this.reset.bind(this) },
-            "Reset"
+            " Reset "
           )
         ),
         this.format(this.state.times)
