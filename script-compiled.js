@@ -38,19 +38,36 @@ var Stopwatch = function (_React$Component) {
         }
       });
     }
+    // format({
+    //   minutes,
+    //   seconds,
+    //   miliseconds
+    // }) {
+    //   //przygotowuje tekst do wyswietlenia
+    //   return `${pad0(minutes)}:${pad0(seconds)}:${pad0(
+    //     Math.floor(miliseconds)
+    //   )}`;
+    // }
+
   }, {
     key: "format",
     value: function format(times) {
       return pad0(times.minutes) + " : " + pad0(times.seconds) + " : " + pad0(Math.floor(times.miliseconds));
-
-      function pad0(value) {
-        var result = value.toString();
-        if (result.length < 2) {
-          result = "0" + result;
-        }
-        return result;
-      }
     }
+    //Patryka
+    // start() {
+    //   const {
+    //     running,
+    //     watch,
+    //     step
+    //   } = this;
+
+    //   if (!running) {
+    //     running = true;
+    //     watch = setInterval(() => step(), 10);
+    //   }
+    // }
+
   }, {
     key: "start",
     value: function start() {
@@ -69,20 +86,27 @@ var Stopwatch = function (_React$Component) {
       if (!this.running) return;
       this.calculate();
     }
-
     // calculate() {
-    //   this.setState({
-    //     times: {
-    //       miliseconds = +1,
-    //       if (miliseconds >= 100) {
-    //         seconds += 1,
-    //         miliseconds = 0,
-    //       }
-    //       if (seconds >= 60) {
-    //         minutes += 1,
-    //         seconds = 0,
-    //       });
-    //       }}}
+    //   const {
+    //     miliseconds,
+    //     seconds,
+    //     minutes
+    //   } = this.times;
+    //   miliseconds += 1;
+    //   if (miliseconds >= 100) {
+    //     seconds += 1;
+    //     miliseconds = 0;
+    //   }
+    //   if (seconds >= 60) {
+    //     minutes += 1;
+    //     seconds = 0;
+    //   }
+    //   this.times = {
+    //     minutes,
+    //     seconds,
+    //     miliseconds
+    //   };
+    // }
 
   }, {
     key: "calculate",
@@ -110,6 +134,8 @@ var Stopwatch = function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       return React.createElement(
         "div",
         { className: "container" },
@@ -118,18 +144,24 @@ var Stopwatch = function (_React$Component) {
           null,
           React.createElement(
             "button",
-            { onClick: this.start.bind(this) },
+            { onClick: function onClick() {
+                return _this3.start();
+              } },
             " Start "
           ),
           React.createElement(
             "button",
-            { onClick: this.stop.bind(this) },
+            { onClick: function onClick() {
+                return _this3.stop();
+              } },
             " Stop "
           ),
           React.createElement(
             "button",
-            { onClick: this.reset.bind(this) },
-            " Reset "
+            { onClick: function onClick() {
+                return _this3.reset();
+              } },
+            " Start "
           )
         ),
         this.format(this.state.times)
@@ -142,3 +174,11 @@ var Stopwatch = function (_React$Component) {
 
 var element = React.createElement(Stopwatch);
 ReactDOM.render(element, document.getElementById("app"));
+
+function pad0(value) {
+  var result = value.toString();
+  if (result.length < 2) {
+    result = "0" + result;
+  }
+  return result;
+}
