@@ -22,24 +22,18 @@ class Stopwatch extends React.Component {
       }
     });
   }
-  // format({
-  //   minutes,
-  //   seconds,
-  //   miliseconds
-  // }) {
-  //   //przygotowuje tekst do wyswietlenia
-  //   return `${pad0(minutes)}:${pad0(seconds)}:${pad0(
-  //     Math.floor(miliseconds)
+  format({ minutes, seconds, miliseconds }) {
+    //przygotowuje tekst do wyswietlenia
+    return `${pad0(minutes)}:${pad0(seconds)}:${pad0(Math.floor(miliseconds))}`;
+  }
+  // format(times) {
+  //   return `${pad0(times.minutes)} : ${pad0(times.seconds)} : ${pad0(
+  //     Math.floor(times.miliseconds)
   //   )}`;
   // }
-  format(times) {
-    return `${pad0(times.minutes)} : ${pad0(times.seconds)} : ${pad0(
-      Math.floor(times.miliseconds)
-    )}`;
-  }
-  //Patryka
+
   // start() {
-  //   const {
+  //   let {
   //     running,
   //     watch,
   //     step
@@ -62,11 +56,7 @@ class Stopwatch extends React.Component {
     this.calculate();
   }
   // calculate() {
-  //   const {
-  //     miliseconds,
-  //     seconds,
-  //     minutes
-  //   } = this.times;
+  //   let { miliseconds, seconds, minutes } = this.times;
   //   miliseconds += 1;
   //   if (miliseconds >= 100) {
   //     seconds += 1;
@@ -109,7 +99,7 @@ class Stopwatch extends React.Component {
         <nav>
           <button onClick={() => this.start()}> Start </button>
           <button onClick={() => this.stop()}> Stop </button>
-          <button onClick={() => this.reset()}> Start </button>
+          <button onClick={() => this.reset()}> Reset </button>
         </nav>
         {this.format(this.state.times)}
       </div>

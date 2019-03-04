@@ -38,25 +38,24 @@ var Stopwatch = function (_React$Component) {
         }
       });
     }
-    // format({
-    //   minutes,
-    //   seconds,
-    //   miliseconds
-    // }) {
-    //   //przygotowuje tekst do wyswietlenia
-    //   return `${pad0(minutes)}:${pad0(seconds)}:${pad0(
-    //     Math.floor(miliseconds)
+  }, {
+    key: "format",
+    value: function format(_ref) {
+      var minutes = _ref.minutes,
+          seconds = _ref.seconds,
+          miliseconds = _ref.miliseconds;
+
+      //przygotowuje tekst do wyswietlenia
+      return pad0(minutes) + ":" + pad0(seconds) + ":" + pad0(Math.floor(miliseconds));
+    }
+    // format(times) {
+    //   return `${pad0(times.minutes)} : ${pad0(times.seconds)} : ${pad0(
+    //     Math.floor(times.miliseconds)
     //   )}`;
     // }
 
-  }, {
-    key: "format",
-    value: function format(times) {
-      return pad0(times.minutes) + " : " + pad0(times.seconds) + " : " + pad0(Math.floor(times.miliseconds));
-    }
-    //Patryka
     // start() {
-    //   const {
+    //   let {
     //     running,
     //     watch,
     //     step
@@ -87,11 +86,7 @@ var Stopwatch = function (_React$Component) {
       this.calculate();
     }
     // calculate() {
-    //   const {
-    //     miliseconds,
-    //     seconds,
-    //     minutes
-    //   } = this.times;
+    //   let { miliseconds, seconds, minutes } = this.times;
     //   miliseconds += 1;
     //   if (miliseconds >= 100) {
     //     seconds += 1;
@@ -161,7 +156,7 @@ var Stopwatch = function (_React$Component) {
             { onClick: function onClick() {
                 return _this3.reset();
               } },
-            " Start "
+            " Reset "
           )
         ),
         this.format(this.state.times)
